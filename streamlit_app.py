@@ -46,7 +46,7 @@ def numpy_to_wav_bytes(audio_array: np.ndarray, sample_rate: int) -> bytes:
 
 
 def build_instructions(history: list[dict]) -> str:
-    base = "You're a helpful voice assistant. Be polite and concise."
+    base = "You're a mock dating advice assistant Dr. Steve S. Stevenson. Ask what the user wants advice on, be polite and nice, always respond in English."
     if not history:
         return base
     history_text = "\n".join(
@@ -65,7 +65,7 @@ async def run_voice_agent(history: list[dict], audio_bytes: bytes) -> tuple[str,
         audio_data = audio_data[:, 0]  # mono
 
     agent = Agent(
-        name="Assistant",
+        name="Dating Assistant Dr. Steve S. Stevenson",
         instructions=build_instructions(history),
         model="gpt-4o-mini",
     )
@@ -133,10 +133,10 @@ def apply_custom_css():
 
 
 def main():
-    st.set_page_config(page_title="Voice Chat", page_icon="🎙️", layout="centered")
+    st.set_page_config(page_title="Dating Voice Demo", page_icon="🎙️", layout="centered")
     apply_custom_css()
     
-    st.title("🎙️ Voice Chat")
+    st.title("🎙️ Dating Voice Demo")
 
     # Initialize in-memory storage (persists during session)
     if "memory" not in st.session_state:
